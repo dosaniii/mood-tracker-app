@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'models/user_model.dart'; // ito yung folder for required
 
+// stateful widget is used for user's interaction where it response and change its apperance
+// whenever a user clicked a button -- checkbox, radio button, text field
 class FormSample extends StatefulWidget {
   const FormSample({super.key});
 
@@ -13,17 +15,23 @@ class _FormSampleState extends State<FormSample> {
       GlobalKey<
         FormState
       >(); // instance of the global key para maaccess yung key ng buong form
+  // global key for saving and validating the mood tracker form when the user submit
 
+  // text controllers are used to manage text input fields
+  // for name, nickname, age
   final TextEditingController _nameController = TextEditingController();
   final TextEditingController _nicknameController = TextEditingController();
   final TextEditingController _ageController = TextEditingController();
+
+  // initialized variables which stores the value based on the user's input
   User? _userValues;
   bool _exercisedToday = true;
-  String? _selectedWeather = _weathers.first;
-  String? _selectedEmotion = _emotions.first;
-  double _emotionIntensity = 5.0;
+  String? _selectedWeather = _weathers.first; // default first weather (sunny)
+  String? _selectedEmotion = _emotions.first; // default first emotion (joy)
+  double _emotionIntensity =
+      5.0; // default emotion intensity at 5.0; used for slider
 
-  // Add these variables for submitted values
+  // stores variables for submitted values
   bool _submittedExercisedToday = true;
   String? _submittedWeather;
   String? _submittedEmotion;
@@ -42,6 +50,7 @@ class _FormSampleState extends State<FormSample> {
     "Partly Cloudy",
   ];
 
+  // list for emotions
   static final List<String> _emotions = [
     "Joy",
     "Sadness",
@@ -77,14 +86,14 @@ class _FormSampleState extends State<FormSample> {
     }
   }
 
-  // Holds selected value for display
-  String _selectedValue = "Select Field";
+  // // Holds selected value for display
+  // final String _selectedValue = "Select Field";
 
-  static const WidgetStateProperty<Icon> thumbIcon =
-      WidgetStateProperty<Icon>.fromMap(<WidgetStatesConstraint, Icon>{
-        WidgetState.selected: Icon(Icons.check),
-        WidgetState.any: Icon(Icons.close),
-      });
+  // static const WidgetStateProperty<Icon> thumbIcon =
+  //     WidgetStateProperty<Icon>.fromMap(<WidgetStatesConstraint, Icon>{
+  //       WidgetState.selected: Icon(Icons.check),
+  //       WidgetState.any: Icon(Icons.close),
+  //     });
 
   // dispose() is for memory keeping pag maraming controllers para madispose sila properly or mag-clear ng mga memory
   @override
@@ -105,8 +114,12 @@ class _FormSampleState extends State<FormSample> {
         _userValues = User(
           name: _nameController.text,
           nickname:
+              //_nicknameController.text is the current value
+              // .isNotEmpty checks if its empty
               _nicknameController.text.isNotEmpty
+                  // if ? _nicknameController.text is not empty, then use the entered value
                   ? _nicknameController.text
+                  // otherwise, return null or empty
                   : null,
           age: _ageController.text,
           exercisedToday: _exercisedToday,
@@ -158,6 +171,7 @@ class _FormSampleState extends State<FormSample> {
       autovalidateMode:
           AutovalidateMode
               .onUnfocus, // pang focus lang ng mga pipindutin na button (pang validate)
+      // main content of mood tracker form
       child: Padding(
         padding: const EdgeInsets.all(8.0),
         child: Column(
@@ -174,17 +188,19 @@ class _FormSampleState extends State<FormSample> {
                 ),
               ),
             ),
-            //Divider(thickness: 3, color: Colors.grey),
             // Dropdown Form Field
 
             // for user's information including names, nickname, and age, also if the user got to exercised today
+            // for name text field
             Row(
               children: [
                 Expanded(
                   child: Padding(
                     padding: EdgeInsets.all(10),
+                    // TextFormField is the textfield inside a forms
+                    // this merges the textfield and formfield together for better construction of widget
                     child: TextFormField(
-                      //
+                      // designing the border
                       decoration: InputDecoration(
                         filled: true,
                         fillColor: const Color.fromARGB(255, 255, 218, 108),
@@ -223,6 +239,8 @@ class _FormSampleState extends State<FormSample> {
                 ),
               ],
             ),
+
+            // for nickname text field
             Row(
               children: [
                 Expanded(
@@ -265,6 +283,7 @@ class _FormSampleState extends State<FormSample> {
               ],
             ),
 
+            // for age text field
             Row(
               children: [
                 // Age Input (Expanded to take available space)
@@ -317,6 +336,8 @@ class _FormSampleState extends State<FormSample> {
                 SizedBox(width: 10),
 
                 // Exercised Today? (Fixed Width)
+                // same row with the age
+                // separate container for modifying its properties
                 Container(
                   width: 200, // Adjust width as needed
                   padding: EdgeInsets.symmetric(vertical: 5, horizontal: 15),
@@ -349,6 +370,7 @@ class _FormSampleState extends State<FormSample> {
             Column(
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
+                // for text information
                 Padding(
                   padding: EdgeInsets.all(10), // Add padding for consistency
                   child: Text(
@@ -361,6 +383,8 @@ class _FormSampleState extends State<FormSample> {
                   ),
                 ),
 
+                // this container shows the list of emotions
+                // modified, designed, and has scrollable feature
                 Container(
                   height: 250, // Set a fixed height for the container
                   padding: EdgeInsets.all(10), // Add some padding
@@ -375,29 +399,41 @@ class _FormSampleState extends State<FormSample> {
                       15,
                     ), // Optional rounded corners
                   ),
+
+                  // scrollable feature
+                  // Make the content scrollable if it overflows
                   child: SingleChildScrollView(
-                    // Make the content scrollable if it overflows
+                    // wrap method is used since radio button could overflow in the screen and cause rendering error
+                    // this prevent the overflowing of radio buttons which then wraps for the next line
                     child: Wrap(
                       spacing: 10, // Space between radio buttons horizontally
                       runSpacing: 5, // Space between rows
                       children:
                           _emotions.map((emotion) {
+                            // this loops through the list of emotions, for each emotion it creates a radio button
                             return Padding(
                               padding: EdgeInsets.symmetric(
                                 vertical: 0,
                                 horizontal: 0,
                               ),
+
                               child: SizedBox(
                                 width: 170,
                                 child: RadioListTile<String>(
-                                  title: Text(emotion),
+                                  title: Text(
+                                    emotion,
+                                  ), // displays the emotion's name
                                   value: emotion,
+                                  // groupvalue is used to control which radio button is selected
+                                  // this switch the emotion based on the user's choice
                                   groupValue: _selectedEmotion,
                                   onChanged: (String? value) {
+                                    // onchanged triggers the radio button is clicked
                                     setState(() {
                                       _selectedEmotion = value;
                                     });
                                   },
+                                  // positions the icon on the left side of text
                                   controlAffinity:
                                       ListTileControlAffinity
                                           .leading, // Moves the radio button to the right side
@@ -432,18 +468,20 @@ class _FormSampleState extends State<FormSample> {
                     ),
                   ),
                 ),
+
+                // slider container
                 Container(
                   width: 370,
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(15),
                     color: const Color.fromARGB(255, 255, 218, 108),
                   ),
-
+                  // slider method
                   child: Slider(
                     value: _emotionIntensity, // Ensure it's not nullable
-                    min: 0, // Define a minimum value
-                    max: 10,
-                    divisions: 10,
+                    min: 0, // initial minimum value 0.0
+                    max: 10, // maximum value 10.0
+                    divisions: 10, // divides the slider into 10 points
                     label: _emotionIntensity.round().toString(), // Fixed typo
                     onChanged: (double value) {
                       setState(() {
@@ -474,6 +512,7 @@ class _FormSampleState extends State<FormSample> {
                     ),
                   ),
                 ),
+
                 SizedBox(
                   width: double.infinity, // Takes full width of the parent
                   height: 80, // Adjust height as needed
@@ -514,21 +553,30 @@ class _FormSampleState extends State<FormSample> {
                           borderSide: BorderSide(color: Colors.transparent),
                         ),
                       ),
-                      //child: DropdownButtonHideUnderline(
+
                       child: DropdownButtonFormField<String>(
-                        value: _selectedWeather,
+                        value:
+                            _selectedWeather, // holds the currently selected weather
+                        // changes the value when the user clicked other option
                         onChanged: (String? value) {
                           setState(() {
+                            // setState() updates the changes from options selected by the user
                             _selectedWeather = value;
                           });
                         },
+
+                        // list of weathers
+                        // .map is used to loops through each weather type
                         items:
-                            _weathers.map((String value) {
-                              return DropdownMenuItem<String>(
-                                value: value,
-                                child: Text(value),
-                              );
-                            }).toList(),
+                            _weathers.map(
+                              (String value) {
+                                return DropdownMenuItem<String>(
+                                  value: value,
+                                  child: Text(value),
+                                );
+                              },
+                            ).toList(), // toList() this converts the string list from the _emotions into list of widgets
+
                         onSaved: (newValue) {
                           print("Dropdown onSaved method triggered");
                         },

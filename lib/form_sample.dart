@@ -182,9 +182,9 @@ class _FormSampleState extends State<FormSample> {
               child: Text(
                 "User Information",
                 style: TextStyle(
-                  fontSize: 15, // Adjust font size as needed
-                  fontWeight: FontWeight.bold, // Make it bold
-                  color: Colors.black, // Adjust color as needed
+                  fontFamily: 'Poppins',
+                  fontWeight: FontWeight.bold,
+                  fontSize: 18,
                 ),
               ),
             ),
@@ -376,9 +376,9 @@ class _FormSampleState extends State<FormSample> {
                   child: Text(
                     "What do you feel?",
                     style: TextStyle(
-                      fontSize: 15, // Adjust font size as needed
-                      fontWeight: FontWeight.bold, // Make it bold
-                      color: Colors.black, // Adjust color as needed
+                      fontFamily: 'Poppins',
+                      fontWeight: FontWeight.bold,
+                      fontSize: 18,
                     ),
                   ),
                 ),
@@ -462,9 +462,9 @@ class _FormSampleState extends State<FormSample> {
                   child: Text(
                     "How intense was the emotion?",
                     style: TextStyle(
-                      fontSize: 15, // Adjust font size as needed
-                      fontWeight: FontWeight.bold, // Make it bold
-                      color: Colors.black, // Adjust color as needed
+                      fontFamily: 'Poppins',
+                      fontWeight: FontWeight.bold,
+                      fontSize: 18,
                     ),
                   ),
                 ),
@@ -506,9 +506,9 @@ class _FormSampleState extends State<FormSample> {
                   child: Text(
                     "What's the weather today?",
                     style: TextStyle(
-                      fontSize: 15, // Adjust font size as needed
-                      fontWeight: FontWeight.bold, // Make it bold
-                      color: Colors.black, // Adjust color as needed
+                      fontFamily: 'Poppins',
+                      fontWeight: FontWeight.bold,
+                      fontSize: 18,
                     ),
                   ),
                 ),

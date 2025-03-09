@@ -14,7 +14,10 @@ class _UserInteractivitySampleState extends State<UserInteractivitySample> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Mood Tracker"),
+        title: Text(
+          "Mood Tracker",
+          style: TextStyle(fontFamily: 'Poppins', fontWeight: FontWeight.bold),
+        ),
         backgroundColor: Theme.of(context).primaryColor,
         foregroundColor: Colors.white,
       ),

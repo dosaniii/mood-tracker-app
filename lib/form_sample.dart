@@ -86,15 +86,6 @@ class _FormSampleState extends State<FormSample> {
     }
   }
 
-  // // Holds selected value for display
-  // final String _selectedValue = "Select Field";
-
-  // static const WidgetStateProperty<Icon> thumbIcon =
-  //     WidgetStateProperty<Icon>.fromMap(<WidgetStatesConstraint, Icon>{
-  //       WidgetState.selected: Icon(Icons.check),
-  //       WidgetState.any: Icon(Icons.close),
-  //     });
-
   // dispose() is for memory keeping pag maraming controllers para madispose sila properly or mag-clear ng mga memory
   @override
   void dispose() {
@@ -175,13 +166,15 @@ class _FormSampleState extends State<FormSample> {
       child: Padding(
         padding: const EdgeInsets.all(8.0),
         child: Column(
-          crossAxisAlignment: CrossAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.start,
+
           children: [
             Padding(
               padding: EdgeInsets.all(10), // Add padding for consistency
               child: Text(
                 "User Information",
                 style: TextStyle(
+                  color: Color(0xFFFFBF42),
                   fontFamily: 'Poppins',
                   fontWeight: FontWeight.bold,
                   fontSize: 18,
@@ -203,7 +196,7 @@ class _FormSampleState extends State<FormSample> {
                       // designing the border
                       decoration: InputDecoration(
                         filled: true,
-                        fillColor: const Color.fromARGB(255, 255, 218, 108),
+                        fillColor: Color(0xFFFFFDC6),
                         // pang outlined border pang design lang
                         border: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(
@@ -250,7 +243,7 @@ class _FormSampleState extends State<FormSample> {
                       //
                       decoration: InputDecoration(
                         filled: true,
-                        fillColor: const Color.fromARGB(255, 255, 218, 108),
+                        fillColor: Color(0xFFFFFDC6),
                         // pang outlined border pang design lang
                         border: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(
@@ -293,7 +286,7 @@ class _FormSampleState extends State<FormSample> {
                     child: TextFormField(
                       decoration: InputDecoration(
                         filled: true,
-                        fillColor: const Color.fromARGB(255, 255, 218, 108),
+                        fillColor: Color(0xFFFFFDC6),
                         border: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(15),
                           borderSide: BorderSide(color: Colors.transparent),
@@ -343,7 +336,7 @@ class _FormSampleState extends State<FormSample> {
                   padding: EdgeInsets.symmetric(vertical: 5, horizontal: 15),
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(15),
-                    color: const Color.fromARGB(255, 255, 218, 108),
+                    color: Color(0xFFFFFDC6),
                   ),
                   child: SwitchListTile(
                     contentPadding: EdgeInsets.zero,
@@ -363,321 +356,317 @@ class _FormSampleState extends State<FormSample> {
             ),
 
             SizedBox(height: 15), // Add spacing between the two containers
-            Divider(thickness: 2, color: Color(0xFF5B4689)),
+            // Divider(thickness: 2, color: Color(0xFF5B4689)),
             SizedBox(height: 15), // Add spacing between the two containers
             // this updates the emotions of the user
             // it includes the list of emotions which can be choose by the user
+
+            // --CONTAINER FOR EMOTION, WEATHER, SUBMIT AND RESET BUTTON
             Column(
-              crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-                // for text information
-                Padding(
-                  padding: EdgeInsets.all(10), // Add padding for consistency
-                  child: Text(
-                    "What do you feel?",
-                    style: TextStyle(
-                      fontFamily: 'Poppins',
-                      fontWeight: FontWeight.bold,
-                      fontSize: 18,
-                    ),
-                  ),
-                ),
-
-                // this container shows the list of emotions
-                // modified, designed, and has scrollable feature
                 Container(
-                  height: 250, // Set a fixed height for the container
-                  padding: EdgeInsets.all(10), // Add some padding
                   decoration: BoxDecoration(
-                    color: Color.fromARGB(
-                      255,
-                      255,
-                      218,
-                      108,
-                    ), // Background color
-                    borderRadius: BorderRadius.circular(
-                      15,
-                    ), // Optional rounded corners
+                    color: Color(
+                      0xFFFFD95A,
+                    ), // Background color for the container
+                    borderRadius: BorderRadius.circular(15), // Rounded corners
                   ),
+                  padding: EdgeInsets.all(16), // Padding inside the container
+                  child: Column(
+                    children: [
+                      // --WHAT'S THE WEATHER TODAY? SECTION
+                      Padding(
+                        padding: EdgeInsets.all(
+                          10,
+                        ), // Add padding for consistency
+                        child: Text(
+                          "What's the weather today?",
+                          style: TextStyle(
+                            color: Color(0xFFFFBF42),
+                            fontFamily: 'Poppins',
+                            fontWeight: FontWeight.bold,
+                            fontSize: 18,
+                          ),
+                        ),
+                      ),
 
-                  // scrollable feature
-                  // Make the content scrollable if it overflows
-                  child: SingleChildScrollView(
-                    // wrap method is used since radio button could overflow in the screen and cause rendering error
-                    // this prevent the overflowing of radio buttons which then wraps for the next line
-                    child: Wrap(
-                      spacing: 10, // Space between radio buttons horizontally
-                      runSpacing: 5, // Space between rows
-                      children:
-                          _emotions.map((emotion) {
-                            // this loops through the list of emotions, for each emotion it creates a radio button
-                            return Padding(
-                              padding: EdgeInsets.symmetric(
-                                vertical: 0,
-                                horizontal: 0,
+                      SizedBox(
+                        height: 15,
+                      ), // Spacing between weather dropdown and "What do you feel?" section
+                      // --WHAT DO YOU FEEL? SECTION
+                      Padding(
+                        padding: EdgeInsets.all(
+                          10,
+                        ), // Add padding for consistency
+                        child: Text(
+                          "What do you feel?",
+                          style: TextStyle(
+                            color: Color(0xFFFFBF42),
+                            fontFamily: 'Poppins',
+                            fontWeight: FontWeight.bold,
+                            fontSize: 18,
+                          ),
+                        ),
+                      ),
+
+                      // --DROPDOWN FOR EMOTIONS
+                      SizedBox(
+                        width:
+                            double.infinity, // Takes full width of the parent
+                        height: 80, // Adjust height as needed
+                        child: Container(
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(15),
+                          ),
+                          padding: EdgeInsets.symmetric(
+                            horizontal: 12,
+                            vertical: 4,
+                          ),
+                          child: InputDecorator(
+                            decoration: InputDecoration(
+                              contentPadding: EdgeInsets.symmetric(
+                                horizontal: 20,
+                                vertical: 15,
                               ),
-
-                              child: SizedBox(
-                                width: 170,
-                                child: RadioListTile<String>(
-                                  title: Text(
-                                    emotion,
-                                  ), // displays the emotion's name
-                                  value: emotion,
-                                  // groupvalue is used to control which radio button is selected
-                                  // this switch the emotion based on the user's choice
-                                  groupValue: _selectedEmotion,
-                                  onChanged: (String? value) {
-                                    // onchanged triggers the radio button is clicked
-                                    setState(() {
-                                      _selectedEmotion = value;
-                                    });
-                                  },
-                                  // positions the icon on the left side of text
-                                  controlAffinity:
-                                      ListTileControlAffinity
-                                          .leading, // Moves the radio button to the right side
-                                  secondary: Icon(
-                                    _getEmotionIcon(emotion),
-                                    size: 20, // Adjust the size as needed
-                                  ),
-                                  contentPadding:
-                                      EdgeInsets.zero, // Removes extra padding
+                              filled: true, // Enables background color
+                              fillColor: const Color.fromARGB(
+                                255,
+                                255,
+                                218,
+                                108,
+                              ), // Background color
+                              border: OutlineInputBorder(
+                                borderRadius: BorderRadius.circular(
+                                  15,
+                                ), // Rounded corners
+                                borderSide: BorderSide(
+                                  color: Colors.transparent,
+                                ), // Hide the border
+                              ),
+                              enabledBorder: OutlineInputBorder(
+                                borderRadius: BorderRadius.circular(15),
+                                borderSide: BorderSide(
+                                  color: Colors.transparent,
                                 ),
                               ),
-                            );
-                          }).toList(),
-                    ),
-                  ),
-                ),
-              ],
-            ),
-
-            SizedBox(height: 15), // Add spacing between the two containers
-            // this columns the intensity of the emotion of the user
-            Column(
-              children: [
-                Padding(
-                  padding: EdgeInsets.all(10), // Add padding for consistency
-                  child: Text(
-                    "How intense was the emotion?",
-                    style: TextStyle(
-                      fontFamily: 'Poppins',
-                      fontWeight: FontWeight.bold,
-                      fontSize: 18,
-                    ),
-                  ),
-                ),
-
-                // slider container
-                Container(
-                  width: 370,
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(15),
-                    color: const Color.fromARGB(255, 255, 218, 108),
-                  ),
-                  // slider method
-                  child: Slider(
-                    value: _emotionIntensity, // Ensure it's not nullable
-                    min: 0, // initial minimum value 0.0
-                    max: 10, // maximum value 10.0
-                    divisions: 10, // divides the slider into 10 points
-                    label: _emotionIntensity.round().toString(), // Fixed typo
-                    onChanged: (double value) {
-                      setState(() {
-                        _emotionIntensity = value; // Update the state
-                      });
-                    },
-                  ),
-                ),
-              ],
-            ),
-
-            SizedBox(height: 15), // Add spacing between the two containers
-            Divider(thickness: 2, color: Color(0xFF5B4689)),
-            SizedBox(height: 10),
-
-            // Dropdown for weather
-            // this column shows the list of weather of the user experiencing
-            Column(
-              children: [
-                Padding(
-                  padding: EdgeInsets.all(10), // Add padding for consistency
-                  child: Text(
-                    "What's the weather today?",
-                    style: TextStyle(
-                      fontFamily: 'Poppins',
-                      fontWeight: FontWeight.bold,
-                      fontSize: 18,
-                    ),
-                  ),
-                ),
-
-                SizedBox(
-                  width: double.infinity, // Takes full width of the parent
-                  height: 80, // Adjust height as needed
-                  child: Container(
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(15),
-                      // color: Color.fromARGB(255, 255, 218, 108),
-                    ),
-                    padding: EdgeInsets.symmetric(horizontal: 12, vertical: 4),
-                    child: InputDecorator(
-                      decoration: InputDecoration(
-                        // labelText: "How's the weather today?",
-                        contentPadding: EdgeInsets.symmetric(
-                          horizontal: 20,
-                          vertical: 15,
-                        ),
-                        filled: true, // Enables background color
-                        fillColor: const Color.fromARGB(
-                          255,
-                          255,
-                          218,
-                          108,
-                        ), // Background color
-                        border: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(
-                            15,
-                          ), // Rounded corners
-                          borderSide: BorderSide(
-                            color: Colors.transparent,
-                          ), // Hide the border
-                        ),
-                        enabledBorder: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(15),
-                          borderSide: BorderSide(color: Colors.transparent),
-                        ),
-                        focusedBorder: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(15),
-                          borderSide: BorderSide(color: Colors.transparent),
-                        ),
-                      ),
-
-                      child: DropdownButtonFormField<String>(
-                        value:
-                            _selectedWeather, // holds the currently selected weather
-                        // changes the value when the user clicked other option
-                        onChanged: (String? value) {
-                          setState(() {
-                            // setState() updates the changes from options selected by the user
-                            _selectedWeather = value;
-                          });
-                        },
-
-                        // list of weathers
-                        // .map is used to loops through each weather type
-                        items:
-                            _weathers.map(
-                              (String value) {
-                                return DropdownMenuItem<String>(
-                                  value: value,
-                                  child: Text(value),
-                                );
+                              focusedBorder: OutlineInputBorder(
+                                borderRadius: BorderRadius.circular(15),
+                                borderSide: BorderSide(
+                                  color: Colors.transparent,
+                                ),
+                              ),
+                            ),
+                            child: DropdownButtonFormField<String>(
+                              value:
+                                  _selectedEmotion, // Holds the currently selected emotion
+                              onChanged: (String? value) {
+                                setState(() {
+                                  _selectedEmotion = value;
+                                });
                               },
-                            ).toList(), // toList() this converts the string list from the _emotions into list of widgets
-
-                        onSaved: (newValue) {
-                          print("Dropdown onSaved method triggered");
-                        },
+                              items:
+                                  _emotions.map((String value) {
+                                    return DropdownMenuItem<String>(
+                                      value: value,
+                                      child: Text(value),
+                                    );
+                                  }).toList(),
+                              onSaved: (newValue) {
+                                print("Dropdown onSaved method triggered");
+                              },
+                            ),
+                          ),
+                        ),
                       ),
-                      //),
-                    ),
+
+                      SizedBox(
+                        height: 15,
+                      ), // Spacing between dropdown and slider
+                      // --EMOTION INTENSITY SLIDER
+                      Padding(
+                        padding: EdgeInsets.symmetric(
+                          horizontal: 16,
+                        ), // Horizontal padding
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(
+                              "Emotion Intensity: ${_emotionIntensity.toStringAsFixed(1)}/10.0",
+                              style: TextStyle(
+                                fontSize: 16,
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
+                            Slider(
+                              value: _emotionIntensity,
+                              min: 0.0,
+                              max: 10.0,
+                              divisions: 10,
+                              label: _emotionIntensity.toStringAsFixed(1),
+                              onChanged: (double value) {
+                                setState(() {
+                                  _emotionIntensity = value;
+                                });
+                              },
+                            ),
+                          ],
+                        ),
+                      ),
+
+                      // --DROPDOWN FOR WEATHER
+                      SizedBox(
+                        width:
+                            double.infinity, // Takes full width of the parent
+                        height: 80, // Adjust height as needed
+                        child: Container(
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(15),
+                          ),
+                          padding: EdgeInsets.symmetric(
+                            horizontal: 12,
+                            vertical: 4,
+                          ),
+                          child: InputDecorator(
+                            decoration: InputDecoration(
+                              contentPadding: EdgeInsets.symmetric(
+                                horizontal: 20,
+                                vertical: 15,
+                              ),
+                              filled: true, // Enables background color
+                              fillColor: const Color.fromARGB(
+                                255,
+                                255,
+                                218,
+                                108,
+                              ), // Background color
+                              border: OutlineInputBorder(
+                                borderRadius: BorderRadius.circular(
+                                  15,
+                                ), // Rounded corners
+                                borderSide: BorderSide(
+                                  color: Colors.transparent,
+                                ), // Hide the border
+                              ),
+                              enabledBorder: OutlineInputBorder(
+                                borderRadius: BorderRadius.circular(15),
+                                borderSide: BorderSide(
+                                  color: Colors.transparent,
+                                ),
+                              ),
+                              focusedBorder: OutlineInputBorder(
+                                borderRadius: BorderRadius.circular(15),
+                                borderSide: BorderSide(
+                                  color: Colors.transparent,
+                                ),
+                              ),
+                            ),
+                            child: DropdownButtonFormField<String>(
+                              value:
+                                  _selectedWeather, // Holds the currently selected weather
+                              onChanged: (String? value) {
+                                setState(() {
+                                  _selectedWeather = value;
+                                });
+                              },
+                              items:
+                                  _weathers.map((String value) {
+                                    return DropdownMenuItem<String>(
+                                      value: value,
+                                      child: Text(value),
+                                    );
+                                  }).toList(),
+                              onSaved: (newValue) {
+                                print("Dropdown onSaved method triggered");
+                              },
+                            ),
+                          ),
+                        ),
+                      ),
+
+                      SizedBox(
+                        height: 15,
+                      ), // Spacing between slider and buttons
+                      // --SUBMIT AND RESET BUTTONS
+                      Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                          children: [
+                            // Submit Button
+                            ElevatedButton(
+                              onPressed: _submitForm,
+                              style: ElevatedButton.styleFrom(
+                                backgroundColor: Color(0xFFFFFDC6),
+
+                                /// Background color
+                                foregroundColor: Color.fromARGB(
+                                  255,
+                                  255,
+                                  218,
+                                  108,
+                                ), // Text color
+                                padding: EdgeInsets.symmetric(
+                                  horizontal: 20,
+                                  vertical: 12,
+                                ), // Button padding
+                                shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(
+                                    20,
+                                  ), // Rounded corners
+                                ),
+                              ),
+                              child: Text(
+                                'Submit',
+                                style: TextStyle(
+                                  color: Colors.black,
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              ),
+                            ),
+
+                            // Reset Button
+                            ElevatedButton(
+                              onPressed: _resetForm,
+                              style: ElevatedButton.styleFrom(
+                                backgroundColor: Color(
+                                  0xFFFFFDC6,
+                                ), // Background color
+                                foregroundColor: Color.fromARGB(
+                                  255,
+                                  255,
+                                  218,
+                                  108,
+                                ), // Text color
+                                padding: EdgeInsets.symmetric(
+                                  horizontal: 20,
+                                  vertical: 12,
+                                ), // Button padding
+                                shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(
+                                    20,
+                                  ), // Rounded corners
+                                ),
+                              ),
+                              child: Text(
+                                'Reset',
+                                style: TextStyle(
+                                  color: Colors.black,
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ],
                   ),
                 ),
               ],
             ),
 
-            SizedBox(height: 15),
-
-            // this is like the alert box of the mood tracker form
-            // updates the user's information whenever it hit the submit or reset button
-            Container(
-              padding: const EdgeInsets.all(16.0),
-              margin: const EdgeInsets.only(bottom: 16.0),
-              decoration: BoxDecoration(
-                color: const Color.fromARGB(255, 255, 218, 108),
-                borderRadius: BorderRadius.circular(15),
-              ),
-              child:
-                  _userValues == null
-                      ? const Text(
-                        "No data submitted yet.",
-                        style: TextStyle(fontStyle: FontStyle.italic),
-                      )
-                      : Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text("Name: ${_userValues!.name}"),
-                          if (_userValues!.nickname != null)
-                            Text("Nickname: ${_userValues!.nickname}"),
-                          Text("Age: ${_userValues!.age}"),
-                          Text(
-                            "Exercised Today?: ${_submittedExercisedToday ? "Stay Fit!" : "Exercise Today!"}",
-                          ),
-                          Text(
-                            "Emotion: $_submittedEmotion ${_submittedEmotionIntensity.toStringAsFixed(1)}/10.0",
-                          ),
-                          Text("Weather: $_submittedWeather"),
-                        ],
-                      ),
-            ),
-
-            Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: [
-                  // Submit Button
-                  ElevatedButton(
-                    onPressed: _submitForm,
-                    style: ElevatedButton.styleFrom(
-                      backgroundColor: Color(0xFF5B4689), // Background color
-                      foregroundColor: Color.fromARGB(
-                        255,
-                        255,
-                        218,
-                        108,
-                      ), // Text color
-                      padding: EdgeInsets.symmetric(
-                        horizontal: 20,
-                        vertical: 12,
-                      ), // Button padding
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(
-                          20,
-                        ), // Rounded corners
-                      ),
-                    ),
-                    child: Text('Submit'),
-                  ),
-
-                  // Reset Button
-                  ElevatedButton(
-                    onPressed: _resetForm,
-                    style: ElevatedButton.styleFrom(
-                      backgroundColor: Color(0xFF5B4689), // Background color
-                      foregroundColor: Color.fromARGB(
-                        255,
-                        255,
-                        218,
-                        108,
-                      ), // Text color
-                      padding: EdgeInsets.symmetric(
-                        horizontal: 20,
-                        vertical: 12,
-                      ), // Button padding
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(
-                          20,
-                        ), // Rounded corners
-                      ),
-                    ),
-                    child: Text('Reset'),
-                  ),
-                ],
-              ),
-            ),
+            // SizedBox(height: 15), // Add spacing between the two containers
+            // Divider(thickness: 2, color: Color(0xFF5B4689)),
+            // SizedBox(height: 10),
           ],
         ),
       ),

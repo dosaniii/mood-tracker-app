@@ -55,6 +55,8 @@ flutter:
 
   assets:
     - assets/vibecheck.png
+    - assets/BeeWell.png
+    - assets/BeeWell.jpeg
 
   # fonts:
   #   - family: Poppins

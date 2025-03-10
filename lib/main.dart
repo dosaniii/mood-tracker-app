@@ -12,7 +12,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'User Interactivity Sample',
+      title: 'BeeWell',
       theme: ThemeData(fontFamily: 'Poppins'),
       home: UserInteractivitySample(),
     );

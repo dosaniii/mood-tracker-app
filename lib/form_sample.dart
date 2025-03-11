@@ -170,10 +170,11 @@ class _FormSampleState extends State<FormSample> {
               CrossAxisAlignment
                   .stretch, // Ensure children stretch horizontally
           children: [
+            SizedBox(height: 15),
             Padding(
               padding: EdgeInsets.all(10), // Add padding for consistency
               child: Text(
-                "BeeUser Information",
+                "User Information",
                 style: TextStyle(
                   color: Color(0xFFFFBF42),
                   fontFamily: 'Poppins',

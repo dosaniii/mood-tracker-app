@@ -39,14 +39,16 @@ class _UserInteractivitySampleState extends State<UserInteractivitySample> {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 // Wrapping image inside a Container to control size without affecting spacing
+                SizedBox(height: 75),
                 Container(
                   height: 70, // Adjusted height
                   width: 300, // Adjusted width
-                  alignment: Alignment.center, // Keeps it centered
-                  // child: Image.asset(
-                  //   'assets/vibecheck.png',
-                  //   fit: BoxFit.contain, // Ensures it doesn't stretch
-                  // ),
+                  alignment: Alignment.center,
+                  //Keeps it centered
+                  child: Image.asset(
+                    'assets/icon.png',
+                    fit: BoxFit.contain, // Ensures it doesn't stretch
+                  ),
                 ),
 
                 // SizedBox(height: 20), // Keeps spacing between the image and form

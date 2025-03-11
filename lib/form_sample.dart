@@ -391,38 +391,108 @@ class _FormSampleState extends State<FormSample> {
                           ),
                         ),
                         children: [
-                          Padding(
-                            padding: const EdgeInsets.all(
-                              10.0,
-                            ), // Add padding around the inner container
-                            child: Container(
-                              decoration: BoxDecoration(
-                                color: Color(0xFFFFFDC6),
-                                borderRadius: BorderRadius.circular(15),
-                              ),
-                              child: Padding(
-                                padding: const EdgeInsets.symmetric(
-                                  horizontal: 16.0,
-                                  vertical: 10.0, // Add vertical padding
+                          SizedBox(
+                            child: Padding(
+                              padding: const EdgeInsets.all(
+                                10.0,
+                              ), // Add padding around the inner container
+                              child: Container(
+                                decoration: BoxDecoration(
+                                  color: Color(0xFFFFFDC6),
+                                  borderRadius: BorderRadius.circular(15),
                                 ),
-                                child: DropdownButtonFormField<String>(
-                                  value:
-                                      _selectedEmotion, // Holds the currently selected emotion
-                                  onChanged: (String? value) {
-                                    setState(() {
-                                      _selectedEmotion = value;
-                                    });
-                                  },
-                                  items:
-                                      _emotions.map((String value) {
-                                        return DropdownMenuItem<String>(
-                                          value: value,
-                                          child: Text(value),
-                                        );
-                                      }).toList(),
-                                  onSaved: (newValue) {
-                                    print("Dropdown onSaved method triggered");
-                                  },
+                                child: Row(
+                                  crossAxisAlignment:
+                                      CrossAxisAlignment
+                                          .start, // Align columns to the top
+                                  children: [
+                                    // Left Column (First 5 emotions)
+                                    Expanded(
+                                      child: Column(
+                                        children:
+                                            _emotions
+                                                .sublist(
+                                                  0,
+                                                  (_emotions.length / 2).ceil(),
+                                                ) // First half of the list
+                                                .map((emotion) {
+                                                  return Padding(
+                                                    padding:
+                                                        EdgeInsets.symmetric(
+                                                          vertical: 0,
+                                                          horizontal: 0,
+                                                        ),
+                                                    child: SizedBox(
+                                                      width:
+                                                          170, // Adjust width as needed
+                                                      child: RadioListTile<
+                                                        String
+                                                      >(
+                                                        title: Text(emotion),
+                                                        value: emotion,
+                                                        groupValue:
+                                                            _selectedEmotion,
+                                                        onChanged: (
+                                                          String? value,
+                                                        ) {
+                                                          setState(() {
+                                                            _selectedEmotion =
+                                                                value;
+                                                          });
+                                                        },
+                                                        activeColor:
+                                                            Colors.black,
+                                                      ),
+                                                    ),
+                                                  );
+                                                })
+                                                .toList(),
+                                      ),
+                                    ),
+
+                                    // Right Column (Remaining emotions)
+                                    Expanded(
+                                      child: Column(
+                                        children:
+                                            _emotions
+                                                .sublist(
+                                                  (_emotions.length / 2).ceil(),
+                                                ) // Second half of the list
+                                                .map((emotion) {
+                                                  return Padding(
+                                                    padding:
+                                                        EdgeInsets.symmetric(
+                                                          vertical: 0,
+                                                          horizontal: 0,
+                                                        ),
+                                                    child: SizedBox(
+                                                      width:
+                                                          170, // Adjust width as needed
+                                                      child: RadioListTile<
+                                                        String
+                                                      >(
+                                                        title: Text(emotion),
+                                                        value: emotion,
+                                                        groupValue:
+                                                            _selectedEmotion,
+                                                        onChanged: (
+                                                          String? value,
+                                                        ) {
+                                                          setState(() {
+                                                            _selectedEmotion =
+                                                                value;
+                                                          });
+                                                        },
+                                                        activeColor:
+                                                            Colors.black,
+                                                      ),
+                                                    ),
+                                                  );
+                                                })
+                                                .toList(),
+                                      ),
+                                    ),
+                                  ],
                                 ),
                               ),
                             ),
@@ -584,6 +654,8 @@ class _FormSampleState extends State<FormSample> {
                 ),
               ],
             ),
+
+            SizedBox(height: 10),
 
             // --SUBMIT AND RESET BUTTONS
             Row(

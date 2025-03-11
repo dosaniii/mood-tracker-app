@@ -537,13 +537,51 @@ class _FormSampleState extends State<FormSample> {
                     ),
                   ],
                 ),
-
-                // --SUBMIT AND RESET BUTTONS
               ],
             ),
 
             SizedBox(height: 15),
 
+            // alert box
+            // displays the input of the user
+            Container(
+              padding: const EdgeInsets.all(16.0),
+              margin: const EdgeInsets.only(bottom: 16.0),
+
+              decoration: BoxDecoration(
+                color: const Color(0xFFFFD95A),
+                borderRadius: BorderRadius.circular(15),
+              ),
+
+              child:
+                  _userValues == null
+                      ? const Text(
+                        "No data submitted yet!",
+                        style: TextStyle(fontStyle: FontStyle.italic),
+                      )
+                      : Column(
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        children: [
+                          Text("Name: ${_userValues!.name}"),
+                          if (_userValues!.nickname != null)
+                            Text("Nickname : ${_userValues!.nickname}"),
+
+                          Text("Age: ${_userValues!.age}"),
+
+                          Text(
+                            "Exercised Today? ${_submittedExercisedToday ? "Stay Fit!" : "Exercise Now!"}",
+                          ),
+
+                          Text(
+                            "Emotion: $_submittedEmotion ${_submittedEmotionIntensity.toStringAsFixed(1)} / 10.0",
+                          ),
+
+                          Text("Weather: $_submittedWeather"),
+                        ],
+                      ),
+            ),
+
+            // --SUBMIT AND RESET BUTTONS
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [

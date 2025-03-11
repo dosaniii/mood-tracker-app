@@ -457,7 +457,7 @@ class _FormSampleState extends State<FormSample> {
                                       _emotionIntensity = value;
                                     });
                                   },
-                                  activeColor: Color(0xFFFFBF42),
+                                  activeColor: Color(0xFF272829),
                                   //inactiveThumbColor: Color(0xFF272829),
                                   //inactiveTrackColor: Colors.amber,
                                 ),
@@ -614,80 +614,3 @@ class _FormSampleState extends State<FormSample> {
     );
   }
 }
-
-                            //           Padding(
-                            //             padding: const EdgeInsets.all(8.0),
-                            //             child: Row(
-                            //               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                            //               children: [
-                            //                 // Submit Button
-                            //                 ElevatedButton(
-                            //                   onPressed: _submitForm,
-                            //                   style: ElevatedButton.styleFrom(
-                            //                     backgroundColor: Color(0xFFFFFDC6),
-
-                            //                     /// Background color
-                            //                     foregroundColor: Color.fromARGB(
-                            //                       255,
-                            //                       255,
-                            //                       218,
-                            //                       108,
-                            //                     ), // Text color
-                            //                     padding: EdgeInsets.symmetric(
-                            //                       horizontal: 20,
-                            //                       vertical: 12,
-                            //                     ), // Button padding
-                            //                     shape: RoundedRectangleBorder(
-                            //                       borderRadius: BorderRadius.circular(
-                            //                         20,
-                            //                       ), // Rounded corners
-                            //                     ),
-                            //                   ),
-                            //                   child: Text(
-                            //                     'Submit',
-                            //                     style: TextStyle(
-                            //                       color: Colors.black,
-                            //                       fontWeight: FontWeight.bold,
-                            //                     ),
-                            //                   ),
-                            //                 ),
-
-                            //                 // Reset Button
-                            //                 ElevatedButton(
-                            //                   onPressed: _resetForm,
-                            //                   style: ElevatedButton.styleFrom(
-                            //                     backgroundColor: Color(
-                            //                       0xFFFFFDC6,
-                            //                     ), // Background color
-                            //                     foregroundColor: Color.fromARGB(
-                            //                       255,
-                            //                       255,
-                            //                       218,
-                            //                       108,
-                            //                     ), // Text color
-                            //                     padding: EdgeInsets.symmetric(
-                            //                       horizontal: 20,
-                            //                       vertical: 12,
-                            //                     ), // Button padding
-                            //                     shape: RoundedRectangleBorder(
-                            //                       borderRadius: BorderRadius.circular(
-                            //                         20,
-                            //                       ), // Rounded corners
-                            //                     ),
-                            //                   ),
-                            //                   child: Text(
-                            //                     'Reset',
-                            //                     style: TextStyle(
-                            //                       color: Colors.black,
-                            //                       fontWeight: FontWeight.bold,
-                            //                     ),
-                            //                   ),
-                            //                 ),
-                            //               ],
-                            //             ),
-                            //           ),
-                            //         ],
-                            //       ),
-                            //     ),
-                            //   ],
-                            // ),

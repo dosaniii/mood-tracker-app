@@ -457,6 +457,9 @@ class _FormSampleState extends State<FormSample> {
                                       _emotionIntensity = value;
                                     });
                                   },
+                                  activeColor: Color(0xFFFFBF42),
+                                  //inactiveThumbColor: Color(0xFF272829),
+                                  //inactiveTrackColor: Colors.amber,
                                 ),
                               ],
                             ),
@@ -534,49 +537,75 @@ class _FormSampleState extends State<FormSample> {
                     ),
                   ],
                 ),
-                //                 // Reset Button
-                //                 ElevatedButton(
-                //                   onPressed: _resetForm,
-                //                   style: ElevatedButton.styleFrom(
-                //                     backgroundColor: Color(
-                //                       0xFFFFFDC6,
-                //                     ), // Background color
-                //                     foregroundColor: Color.fromARGB(
-                //                       255,
-                //                       255,
-                //                       218,
-                //                       108,
-                //                     ), // Text color
-                //                     padding: EdgeInsets.symmetric(
-                //                       horizontal: 20,
-                //                       vertical: 12,
-                //                     ), // Button padding
-                //                     shape: RoundedRectangleBorder(
-                //                       borderRadius: BorderRadius.circular(
-                //                         20,
-                //                       ), // Rounded corners
-                //                     ),
-                //                   ),
-                //                   child: Text(
-                //                     'Reset',
-                //                     style: TextStyle(
-                //                       color: Colors.black,
-                //                       fontWeight: FontWeight.bold,
-                //                     ),
-                //                   ),
-                //                 ),
-                //               ],
-                //             ),
-                //           ),
-                //         ],
-                //       ),
-                //     ),
-                //   ],
-                // ),
 
-                // SizedBox(height: 15), // Add spacing between the two containers
-                // Divider(thickness: 2, color: Color(0xFF5B4689)),
-                // SizedBox(height: 10),
+                // --SUBMIT AND RESET BUTTONS
+              ],
+            ),
+
+            SizedBox(height: 15),
+
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: [
+                SizedBox(
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    children: [
+                      // submit button
+                      ElevatedButton(
+                        onPressed: _submitForm,
+                        style: ElevatedButton.styleFrom(
+                          backgroundColor: Color(0xFFFFFDC6),
+                          foregroundColor: Color.fromARGB(255, 255, 218, 108),
+                          padding: EdgeInsets.symmetric(
+                            horizontal: 25,
+                            vertical: 12,
+                          ),
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(20),
+                          ),
+                        ),
+                        child: Text(
+                          "Submit",
+                          style: TextStyle(
+                            color: Colors.black,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+
+                SizedBox(
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    children: [
+                      // submit button
+                      ElevatedButton(
+                        onPressed: _resetForm,
+                        style: ElevatedButton.styleFrom(
+                          backgroundColor: Color(0xFFFFFDC6),
+                          foregroundColor: Color.fromARGB(255, 255, 218, 108),
+                          padding: EdgeInsets.symmetric(
+                            horizontal: 28,
+                            vertical: 12,
+                          ),
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(20),
+                          ),
+                        ),
+                        child: Text(
+                          "Reset",
+                          style: TextStyle(
+                            color: Colors.black,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
               ],
             ),
           ],
@@ -585,3 +614,80 @@ class _FormSampleState extends State<FormSample> {
     );
   }
 }
+
+                            //           Padding(
+                            //             padding: const EdgeInsets.all(8.0),
+                            //             child: Row(
+                            //               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                            //               children: [
+                            //                 // Submit Button
+                            //                 ElevatedButton(
+                            //                   onPressed: _submitForm,
+                            //                   style: ElevatedButton.styleFrom(
+                            //                     backgroundColor: Color(0xFFFFFDC6),
+
+                            //                     /// Background color
+                            //                     foregroundColor: Color.fromARGB(
+                            //                       255,
+                            //                       255,
+                            //                       218,
+                            //                       108,
+                            //                     ), // Text color
+                            //                     padding: EdgeInsets.symmetric(
+                            //                       horizontal: 20,
+                            //                       vertical: 12,
+                            //                     ), // Button padding
+                            //                     shape: RoundedRectangleBorder(
+                            //                       borderRadius: BorderRadius.circular(
+                            //                         20,
+                            //                       ), // Rounded corners
+                            //                     ),
+                            //                   ),
+                            //                   child: Text(
+                            //                     'Submit',
+                            //                     style: TextStyle(
+                            //                       color: Colors.black,
+                            //                       fontWeight: FontWeight.bold,
+                            //                     ),
+                            //                   ),
+                            //                 ),
+
+                            //                 // Reset Button
+                            //                 ElevatedButton(
+                            //                   onPressed: _resetForm,
+                            //                   style: ElevatedButton.styleFrom(
+                            //                     backgroundColor: Color(
+                            //                       0xFFFFFDC6,
+                            //                     ), // Background color
+                            //                     foregroundColor: Color.fromARGB(
+                            //                       255,
+                            //                       255,
+                            //                       218,
+                            //                       108,
+                            //                     ), // Text color
+                            //                     padding: EdgeInsets.symmetric(
+                            //                       horizontal: 20,
+                            //                       vertical: 12,
+                            //                     ), // Button padding
+                            //                     shape: RoundedRectangleBorder(
+                            //                       borderRadius: BorderRadius.circular(
+                            //                         20,
+                            //                       ), // Rounded corners
+                            //                     ),
+                            //                   ),
+                            //                   child: Text(
+                            //                     'Reset',
+                            //                     style: TextStyle(
+                            //                       color: Colors.black,
+                            //                       fontWeight: FontWeight.bold,
+                            //                     ),
+                            //                   ),
+                            //                 ),
+                            //               ],
+                            //             ),
+                            //           ),
+                            //         ],
+                            //       ),
+                            //     ),
+                            //   ],
+                            // ),

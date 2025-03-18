@@ -20,17 +20,6 @@ class _UserInteractivitySampleState extends State<UserInteractivitySample> {
         ),
       ),
       child: Scaffold(
-        // appBar: AppBar(
-        //   title: Text(
-        //     "Mood Tracker",
-        //     style: TextStyle(
-        //       fontFamily: 'Poppins',
-        //       fontWeight: FontWeight.bold,
-        //     ),
-        //   ),
-        //   backgroundColor: Theme.of(context).primaryColor,
-        //   foregroundColor: Colors.white,
-        // ),
         backgroundColor: Colors.transparent, // Set the background color here
         body: SingleChildScrollView(
           child: Padding(
